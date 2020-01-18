@@ -19,7 +19,12 @@ use Illuminate\http\Request;
 Route::get('/','HomeController@index');
 
 Route::resource('/product','ProductController');
+//cart
+Route::get('/mycart','CartController@mycart');
+Route::post('/add-to-cart','CartController@addToCart');
 
+
+//end cart
 
 Route::view('/about', 'about');
 
