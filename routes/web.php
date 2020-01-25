@@ -22,6 +22,9 @@ Route::resource('/product','ProductController');
 //cart
 Route::get('/mycart','CartController@mycart');
 Route::post('/add-to-cart','CartController@addToCart');
+Route::post('/update-cart','CartController@updateCart');
+Route::any('/cartItemDelete/{temp_order_row_id}','CartController@cartItemDelete');
+Route::any('/cartItemDeleteAll','CartController@cartItemDeleteAll');
 
 
 //end cart

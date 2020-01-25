@@ -125,7 +125,8 @@ $(document).ready(function() {
       type: "POST",
       headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')},
       url : "{{url ('/') }}" + "/cartItemDeleteAll",
-      //data : dataString,                    
+      //data : dataString,
+                        
       success : function(status) {
       window.location.href = '{{url('/')}}/mycart';   
       }
