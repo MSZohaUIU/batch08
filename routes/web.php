@@ -29,6 +29,21 @@ Route::any('/cartItemDeleteAll','CartController@cartItemDeleteAll');
 
 //end cart
 
+
+Route::get ('/checkoutPage','CartController@checkoutItems');
+Route::post ('/confirm-order','CartController@confirmOrder');
+Route::post ('/checkout','CartController@checkout');
+Route::post ('/checkoutwithregistration','CartController@checkoutwithregistration');
+
+
+Route::get('/user-registration','Auth\CommonController@showRegistrationForm')->name('user.registration');
+Route::post('/user-registration','Auth\CommonController@register')->name('user.registration.submit');
+
+
+
+
+
+
 Route::view('/about', 'about');
 
 Route::view('/contact_us', 'contact');
