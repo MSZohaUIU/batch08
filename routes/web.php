@@ -36,21 +36,30 @@ Route::post ('/checkout','CartController@checkout');
 Route::post ('/checkoutwithregistration','CartController@checkoutwithregistration');
 
 
+
 Route::get('/user-registration','Auth\CommonController@showRegistrationForm')->name('user.registration');
 Route::post('/user-registration','Auth\CommonController@register')->name('user.registration.submit');
 
 
 
 
-
-
 Route::view('/about', 'about');
+
+
 
 Route::view('/contact_us', 'contact');
 
-Route::post('/submit-contact', function (Request $request){
-//	dd($request);
-	$data = array('name'=>$request->username,'email' => $request->email, 'message' => $request->message);
+ Route::post('/submit-contact', function (Request $request){
+dd($request);
+$data = array('name'=>$request->username,'email' => $request->email, 'message' => $request->message);
 
-	return view('/show_details',['data'=>$data]);
+return view('/show_details',['data'=>$data]);
+});
+
+ Route::group(['middleware' => 'admin', 'namespace' => 'Admin'], function () {
+//Route::get('/admin', 'LoginController@login');
+Route::view('/admin', 'admin.login');
+Route::post('/postAdminLogin', 'LoginController@postAdminLogin'); 
+Route::get('/admin/logout', 'LoginController@logout');
+Route::get('/admin/dashboard', 'DashboardController@index');
 });
